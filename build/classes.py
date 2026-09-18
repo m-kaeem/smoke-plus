@@ -234,7 +234,7 @@ def build():
          "border-color": col("color-line-light"),
          "border-radius": radius(10), "padding": ZERO,
          "overflow": st("hidden"), "cursor": POINTER,
-         "text-align": st("left"), "text-decoration": st("none")},
+         "text-align": st("start"), "text-decoration": st("none")},
         tablet={"flex": flex(1, 1, px(320))},
         mobile={"flex": flex(1, 1, pct(100))},
         hover={"border-color": col("color-lime")}))
