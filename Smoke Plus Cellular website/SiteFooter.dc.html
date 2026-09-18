@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+.site-footer { display: flex; flex-direction: column; background: var(--color-ink); border-top: var(--border-thick) solid var(--color-lime); }
+.footer-shell { display: flex; flex-direction: column; gap: var(--space-7); width: 100%; max-width: var(--shell-max); margin: 0 auto; padding: var(--pad-section) var(--pad-shell) var(--space-6); box-sizing: border-box; }
+.footer-top { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+.footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); flex: 1 1 var(--col-wide); }
+.footer-logo { display: block; width: var(--footer-logo-w); height: auto; }
+.footer-blurb { font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-body); color: var(--color-steel); margin: 0; max-width: var(--measure-short); }
+.footer-col { display: flex; flex-direction: column; gap: var(--space-3); flex: 0 1 var(--col-narrow); }
+.footer-head { font-family: var(--font-label); font-size: var(--text-label); text-transform: uppercase; letter-spacing: var(--track-wider); color: var(--color-lime); margin: 0; }
+.footer-link { font-family: var(--font-body); font-size: var(--text-body); color: var(--color-mist); background: none; border: 0; padding: 0; text-align: left; cursor: pointer; }
+.footer-link:hover { color: var(--color-white); }
+.footer-line { font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-tight); color: var(--color-mist); margin: 0; }
+.footer-strong { font-family: var(--font-display); font-size: var(--text-h3); color: var(--color-white); margin: 0; }
+.footer-warn { display: flex; flex-direction: column; gap: var(--space-2); border: var(--border-thin) solid var(--color-caution); border-radius: var(--radius-md); padding: var(--space-5); }
+.footer-warn-head { font-family: var(--font-label); font-size: var(--text-label); text-transform: uppercase; letter-spacing: var(--track-wider); color: var(--color-caution); margin: 0; }
+.footer-warn-text { font-family: var(--font-body); font-size: var(--text-small); line-height: var(--leading-body); color: var(--color-mist); margin: 0; }
+.footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); border-top: var(--border-thin) solid var(--color-line); padding-top: var(--space-5); }
+.footer-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); font-family: var(--font-body); font-size: var(--text-small); color: var(--color-steel); }
+.dot-sep { display: block; width: var(--dot-sm); height: var(--dot-sm); border-radius: var(--radius-pill); background: var(--color-line); }
+.lay-tablet .footer-top { gap: var(--space-6); }
+.lay-mobile .footer-top { flex-direction: column; gap: var(--space-6); }
+.lay-mobile .footer-bottom { flex-direction: column; align-items: flex-start; }
+</style>
+</helmet>
+<footer class="site-footer">
+  <div class="footer-shell">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img class="footer-logo" src="images/unnamed.png" alt="Smoke Plus Cellular">
+        <p class="footer-blurb">One stop on Main Street for vapes, glass, hookah, kratom, cigars, phones and phone repair. Walk in, ask for what you want, pay less than you expect.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-head">Pages</p>
+        <sc-for list="{{ items }}" as="item" hint-placeholder-count="5">
+          <button class="footer-link" onClick="{{ item.go }}">{{ item.label }}</button>
+        </sc-for>
+      </div>
+      <div class="footer-col">
+        <p class="footer-head">On the shelves</p>
+        <p class="footer-line">Vapes and disposables</p>
+        <p class="footer-line">Glass, hookah and shisha</p>
+        <p class="footer-line">Phones, cases and repair</p>
+        <p class="footer-line">Kratom, cigars and wraps</p>
+        <p class="footer-line">Incense, ZYN and lighters</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-head">Find us</p>
+        <p class="footer-strong">607-237-0051</p>
+        <p class="footer-line">215 Main St<br>Johnson City, NY 13790</p>
+        <p class="footer-line">Mon to Fri, 8am to 10pm<br>Sat and Sun, 9am to 10pm<br>Open every holiday</p>
+      </div>
+    </div>
+    <div class="footer-warn">
+      <p class="footer-warn-head">Age restricted products</p>
+      <p class="footer-warn-text">You must be 21 or older to buy tobacco, vape, nicotine or kratom products in New York State. We card everyone. Bring a valid photo ID. Nicotine is an addictive chemical.</p>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-meta">
+        <span>Smoke Plus Cellular</span><span class="dot-sep"></span><span>Johnson City, New York</span><span class="dot-sep"></span><span>Serving Broome County since 2022</span>
+      </div>
+      <div class="footer-meta">
+        <span>Smokpluswholesale@gmail.com</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:560},&quot;onNav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(page: string) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const nav = this.props.onNav;
+    const pages = [["home", "Home"], ["services", "Services"], ["gallery", "Gallery"], ["about", "About"], ["contact", "Contact"]];
+    return {
+      items: pages.map(([key, label]) => ({ key, label, go: () => { if (nav) nav(key); } }))
+    };
+  }
+}
+</script>
+</body>
+</html>

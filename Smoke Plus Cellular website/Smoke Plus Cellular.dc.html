@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-ink: #081924;
+  --color-navy-deep: #0D2637;
+  --color-navy: #113A52;
+  --color-navy-soft: #17506F;
+  --color-lime: #A8DB1E;
+  --color-lime-bright: #C6F23E;
+  --color-white: #FFFFFF;
+  --color-paper: #FBFCFB;
+  --color-cloud: #EFF3F2;
+  --color-mist: #C6D4DC;
+  --color-steel: #8CA0AC;
+  --color-slate: #48606F;
+  --color-line: #1D4964;
+  --color-line-light: #DBE3E5;
+  --color-caution: #F4D04A;
+  --color-scrim: rgba(6, 18, 26, 0.74);
+  --color-scrim-soft: rgba(6, 18, 26, 0.30);
+  --color-chrome: #101417;
+  --color-chrome-2: #1B2125;
+  --color-chrome-3: #2C353A;
+  --color-chrome-text: #9FB0B8;
+
+  --font-display: "Archivo Black", "Helvetica Neue", "Helvetica", sans-serif;
+  --font-body: "Barlow", "Helvetica Neue", "Helvetica", sans-serif;
+  --font-label: "Barlow Condensed", "Helvetica Neue", "Helvetica", sans-serif;
+  --font-mono: "IBM Plex Mono", "Menlo", monospace;
+
+  --text-hero: 72px;
+  --text-hero-t: 50px;
+  --text-hero-m: 36px;
+  --text-h1: 54px;
+  --text-h1-t: 40px;
+  --text-h1-m: 30px;
+  --text-h2: 38px;
+  --text-h2-t: 30px;
+  --text-h2-m: 25px;
+  --text-h3: 23px;
+  --text-h3-t: 21px;
+  --text-h3-m: 19px;
+  --text-lead: 21px;
+  --text-lead-t: 19px;
+  --text-lead-m: 17px;
+  --text-nav: 19px;
+  --text-body: 17px;
+  --text-small: 15px;
+  --text-label: 13px;
+  --text-micro: 12px;
+
+  --leading-hero: 1.02;
+  --leading-head: 1.1;
+  --leading-tight: 1.35;
+  --leading-body: 1.6;
+  --track-wide: 0.08em;
+  --track-wider: 0.14em;
+  --track-tight: -0.01em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --pad-section: 96px;
+  --pad-section-t: 64px;
+  --pad-section-m: 44px;
+  --pad-shell: 48px;
+  --pad-shell-t: 32px;
+  --pad-shell-m: 20px;
+
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --border-thin: 1px;
+  --border-thick: 3px;
+
+  --shell-max: 1200px;
+  --measure: 640px;
+  --measure-short: 430px;
+  --measure-wide: 800px;
+  --col-wide: 280px;
+  --col-narrow: 170px;
+  --col-half: 380px;
+  --col-half-t: 320px;
+  --card-min: 240px;
+  --card-min-t: 320px;
+  --stat-min: 180px;
+  --stat-min-m: 130px;
+  --shot-min: 260px;
+  --shot-max: 360px;
+  --shot-h: 300px;
+  --shot-h-t: 250px;
+  --shot-h-m: 260px;
+  --strip-min: 180px;
+  --strip-h: 200px;
+  --field-min: 200px;
+  --area-h: 140px;
+  --map-h: 320px;
+  --hero-min: 620px;
+  --hero-min-t: 520px;
+  --hero-min-m: 540px;
+  --gate-min: 780px;
+  --gate-min-m: 640px;
+  --gate-logo-w: 300px;
+  --gate-logo-w-m: 220px;
+  --logo-h: 62px;
+  --logo-h-t: 54px;
+  --logo-h-m: 44px;
+  --footer-logo-w: 220px;
+  --dot-sm: 6px;
+  --dot-lg: 9px;
+  --bar-w: 20px;
+  --bar-h: 2px;
+  --stripe-gap: 10px;
+  --stripe-w: 11px;
+  --frame-desktop: 1440px;
+  --frame-tablet: 834px;
+  --frame-mobile: 390px;
+  --ratio-photo: 4 / 3;
+  --ratio-portrait: 3 / 4;
+  --shadow-card: 0 18px 40px rgba(6, 18, 26, 0.22);
+}
+body { margin: 0; background: var(--color-chrome); font-family: var(--font-body); }
+a { color: var(--color-lime); text-decoration: none; }
+a:hover { color: var(--color-lime-bright); }
+img { max-width: 100%; }
+button { font: inherit; }
+
+.workbench { display: flex; flex-direction: column; min-height: 100vh; background: var(--color-chrome); }
+.tool-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); background: var(--color-chrome-2); border-bottom: var(--border-thin) solid var(--color-chrome-3); padding: var(--space-4) var(--space-5); }
+.tool-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.tool-label { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-chrome-text); margin: 0; }
+.tool-btn { font-family: var(--font-label); font-size: var(--text-body); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-chrome-text); background: none; border: var(--border-thin) solid var(--color-chrome-3); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-4); cursor: pointer; }
+.tool-btn:hover { color: var(--color-white); border-color: var(--color-steel); }
+.tool-btn-on { color: var(--color-ink); background: var(--color-lime); border-color: var(--color-lime); }
+.frame-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); padding: var(--space-6); }
+.frame-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-chrome-text); }
+
+.site { display: flex; flex-direction: column; width: var(--frame-desktop); background: var(--color-paper); box-shadow: var(--shadow-card); }
+.page { display: flex; flex-direction: column; }
+.shell { display: flex; flex-direction: column; width: 100%; max-width: var(--shell-max); margin: 0 auto; padding-left: var(--pad-shell); padding-right: var(--pad-shell); box-sizing: border-box; }
+.section { display: flex; flex-direction: column; padding-top: var(--pad-section); padding-bottom: var(--pad-section); }
+.section-paper { background: var(--color-paper); }
+.section-cloud { background: var(--color-cloud); }
+.section-ink { background: var(--color-ink); }
+.section-navy { background: var(--color-navy-deep); }
+.stack-4 { display: flex; flex-direction: column; gap: var(--space-4); }
+.stack-5 { display: flex; flex-direction: column; gap: var(--space-5); }
+.stack-6 { display: flex; flex-direction: column; gap: var(--space-6); }
+.stack-7 { display: flex; flex-direction: column; gap: var(--space-7); }
+
+.eyebrow { display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-label); font-size: var(--text-label); text-transform: uppercase; letter-spacing: var(--track-wider); margin: 0; }
+.eyebrow-dark { color: var(--color-slate); }
+.eyebrow-light { color: var(--color-lime); }
+.rule { display: block; width: var(--space-7); height: var(--border-thick); background: var(--color-lime); flex: 0 0 auto; }
+.dot-live { display: block; width: var(--dot-lg); height: var(--dot-lg); border-radius: var(--radius-pill); background: var(--color-lime); flex: 0 0 auto; }
+
+.h1 { font-family: var(--font-display); font-size: var(--text-h1); line-height: var(--leading-head); letter-spacing: var(--track-tight); margin: 0; }
+.h2 { font-family: var(--font-display); font-size: var(--text-h2); line-height: var(--leading-head); letter-spacing: var(--track-tight); margin: 0; }
+.h3 { font-family: var(--font-display); font-size: var(--text-h3); line-height: var(--leading-tight); margin: 0; }
+.ink { color: var(--color-ink); }
+.on-dark { color: var(--color-white); }
+.lead { font-family: var(--font-body); font-size: var(--text-lead); line-height: var(--leading-body); margin: 0; max-width: var(--measure); }
+.copy { font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-body); margin: 0; max-width: var(--measure); }
+.lead-dark, .copy-dark { color: var(--color-slate); }
+.lead-light, .copy-light { color: var(--color-mist); }
+
+.button-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+.button-primary { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); font-family: var(--font-label); font-size: var(--text-nav); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-ink); background: var(--color-lime); border: 0; border-radius: var(--radius-sm); padding: var(--space-4) var(--space-5); cursor: pointer; }
+.button-primary:hover { background: var(--color-lime-bright); }
+.button-ghost { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); font-family: var(--font-label); font-size: var(--text-nav); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-white); background: none; border: var(--border-thick) solid var(--color-line); border-radius: var(--radius-sm); padding: var(--space-3) var(--space-5); cursor: pointer; }
+.button-ghost:hover { border-color: var(--color-lime); color: var(--color-lime); }
+.button-outline { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); font-family: var(--font-label); font-size: var(--text-nav); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-ink); background: none; border: var(--border-thick) solid var(--color-ink); border-radius: var(--radius-sm); padding: var(--space-3) var(--space-5); cursor: pointer; }
+.button-outline:hover { background: var(--color-ink); color: var(--color-lime); }
+
+.hero { display: flex; flex-direction: column; justify-content: flex-end; min-height: var(--hero-min); background-color: var(--color-ink); background-size: cover; background-position: center; }
+.hero-home { background-image: linear-gradient(to right, var(--color-scrim), var(--color-scrim-soft)), url("images/unnamed%20(12).jpg"); }
+.hero-inner { display: flex; flex-direction: column; gap: var(--space-5); align-items: flex-start; padding-top: var(--pad-section); padding-bottom: var(--pad-section); max-width: var(--measure-wide); }
+.hero-title { font-family: var(--font-display); font-size: var(--text-hero); line-height: var(--leading-hero); letter-spacing: var(--track-tight); color: var(--color-white); margin: 0; }
+.hero-strip { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); font-family: var(--font-label); font-size: var(--text-small); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-mist); }
+.dot-sep { display: block; width: var(--dot-sm); height: var(--dot-sm); border-radius: var(--radius-pill); background: var(--color-steel); flex: 0 0 auto; }
+
+.page-head { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; padding-top: var(--pad-section); padding-bottom: var(--pad-section); }
+
+.row { display: flex; flex-wrap: wrap; gap: var(--space-5); }
+.row-tight { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.split { display: flex; flex-wrap: wrap; gap: var(--space-8); align-items: center; }
+.split-top { align-items: flex-start; }
+.split-col { flex: 1 1 var(--col-half); display: flex; flex-direction: column; gap: var(--space-5); align-items: flex-start; }
+
+.card-cat { flex: 1 1 var(--card-min); display: flex; flex-direction: column; background: var(--color-white); border: var(--border-thin) solid var(--color-line-light); border-radius: var(--radius-md); padding: 0; overflow: hidden; cursor: pointer; text-align: left; }
+.card-cat:hover { border-color: var(--color-lime); }
+.card-cat-img { display: block; width: 100%; aspect-ratio: var(--ratio-photo); object-fit: cover; }
+.card-cat-body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); }
+.card-cat-name { font-family: var(--font-display); font-size: var(--text-h3); color: var(--color-ink); margin: 0; }
+.card-cat-text { font-family: var(--font-body); font-size: var(--text-small); line-height: var(--leading-tight); color: var(--color-slate); margin: 0; }
+
+.card-feature { flex: 1 1 var(--card-min); display: flex; flex-direction: column; gap: var(--space-3); background: var(--color-navy-deep); border-radius: var(--radius-md); padding: var(--space-6); }
+.card-num { font-family: var(--font-display); font-size: var(--text-h2); color: var(--color-lime); margin: 0; }
+
+.stat { flex: 1 1 var(--stat-min); display: flex; flex-direction: column; gap: var(--space-2); border-top: var(--border-thick) solid var(--color-lime); padding-top: var(--space-4); }
+.stat-num { font-family: var(--font-display); font-size: var(--text-h1); color: var(--color-white); margin: 0; }
+.stat-label { font-family: var(--font-label); font-size: var(--text-label); text-transform: uppercase; letter-spacing: var(--track-wider); color: var(--color-steel); margin: 0; }
+
+.list { display: flex; flex-direction: column; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.list-item { display: flex; align-items: flex-start; gap: var(--space-3); font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-body); }
+.list-bullet { display: block; width: var(--dot-sm); height: var(--dot-sm); border-radius: var(--radius-pill); background: var(--color-lime); flex: 0 0 auto; margin-top: var(--space-3); }
+.list-dark .list-item { color: var(--color-slate); }
+.list-light .list-item { color: var(--color-mist); }
+
+.service { display: flex; flex-wrap: wrap; gap: var(--space-8); align-items: flex-start; padding-top: var(--space-8); padding-bottom: var(--space-8); border-top: var(--border-thin) solid var(--color-line-light); }
+.service-flip { flex-direction: row-reverse; }
+.service-media { flex: 1 1 var(--col-half); }
+.service-img { display: block; width: 100%; aspect-ratio: var(--ratio-photo); object-fit: cover; border-radius: var(--radius-md); }
+.service-body { flex: 1 1 var(--col-half); display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
+
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.chip { font-family: var(--font-label); font-size: var(--text-body); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-ink); background: var(--color-white); border: var(--border-thin) solid var(--color-line-light); border-radius: var(--radius-pill); padding: var(--space-2) var(--space-4); }
+.chip-dark { color: var(--color-mist); background: var(--color-navy-deep); border-color: var(--color-line); }
+
+.filters { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.filter { font-family: var(--font-label); font-size: var(--text-nav); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-slate); background: none; border: var(--border-thin) solid var(--color-line-light); border-radius: var(--radius-pill); padding: var(--space-2) var(--space-5); cursor: pointer; }
+.filter:hover { color: var(--color-ink); border-color: var(--color-ink); }
+.filter-on { color: var(--color-ink); background: var(--color-lime); border-color: var(--color-lime); }
+
+.shots { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.shot { flex: 1 1 var(--shot-min); max-width: var(--shot-max); display: flex; flex-direction: column; gap: var(--space-3); }
+.shot-img { display: block; width: 100%; height: var(--shot-h); object-fit: cover; border-radius: var(--radius-md); }
+.shot-cap { font-family: var(--font-label); font-size: var(--text-small); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-slate); margin: 0; }
+
+.strip { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.strip-img { display: block; flex: 1 1 var(--strip-min); height: var(--strip-h); object-fit: cover; border-radius: var(--radius-sm); }
+
+.panel { display: flex; flex-direction: column; gap: var(--space-5); align-items: flex-start; background: var(--color-white); border: var(--border-thin) solid var(--color-line-light); border-radius: var(--radius-lg); padding: var(--space-7); box-sizing: border-box; }
+.panel-dark { background: var(--color-navy-deep); border-color: var(--color-line); }
+.panel-col { flex: 1 1 var(--col-half); }
+
+.big-phone { font-family: var(--font-display); font-size: var(--text-h2); color: var(--color-ink); margin: 0; }
+.big-phone-light { color: var(--color-white); }
+
+.hours { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; }
+.hours-row { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); border-bottom: var(--border-thin) solid var(--color-line-light); padding-bottom: var(--space-2); }
+.hours-day { font-family: var(--font-label); font-size: var(--text-body); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-slate); margin: 0; }
+.hours-time { font-family: var(--font-body); font-size: var(--text-body); color: var(--color-ink); margin: 0; }
+
+.form { display: flex; flex-direction: column; gap: var(--space-5); width: 100%; }
+.form-badge { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-ink); background: var(--color-caution); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); align-self: flex-start; }
+.form-row { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.form-field { flex: 1 1 var(--field-min); display: flex; flex-direction: column; gap: var(--space-2); }
+.form-label { font-family: var(--font-label); font-size: var(--text-label); text-transform: uppercase; letter-spacing: var(--track-wider); color: var(--color-slate); margin: 0; }
+.form-input { font-family: var(--font-body); font-size: var(--text-body); color: var(--color-ink); background: var(--color-cloud); border: var(--border-thin) solid var(--color-line-light); border-radius: var(--radius-sm); padding: var(--space-4); box-sizing: border-box; }
+.form-area { min-height: var(--area-h); resize: none; }
+.form-note { font-family: var(--font-mono); font-size: var(--text-micro); line-height: var(--leading-body); color: var(--color-steel); margin: 0; }
+
+.map-slot { display: flex; align-items: center; justify-content: center; min-height: var(--map-h); box-sizing: border-box; border: var(--border-thin) dashed var(--color-steel); border-radius: var(--radius-md); background-color: var(--color-cloud); background-image: repeating-linear-gradient(135deg, transparent, transparent var(--stripe-gap), var(--color-line-light) var(--stripe-gap), var(--color-line-light) var(--stripe-w)); padding: var(--space-6); }
+.map-label { font-family: var(--font-mono); font-size: var(--text-small); line-height: var(--leading-body); color: var(--color-slate); margin: 0; text-align: center; }
+
+.notice { display: flex; flex-direction: column; gap: var(--space-2); border: var(--border-thin) solid var(--color-caution); border-radius: var(--radius-md); padding: var(--space-5); }
+.notice-head { font-family: var(--font-label); font-size: var(--text-label); text-transform: uppercase; letter-spacing: var(--track-wider); color: var(--color-ink); margin: 0; }
+.notice-text { font-family: var(--font-body); font-size: var(--text-small); line-height: var(--leading-body); color: var(--color-slate); margin: 0; }
+
+.cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-6); background: var(--color-lime); border-radius: var(--radius-lg); padding: var(--space-8); }
+.cta-title { font-family: var(--font-display); font-size: var(--text-h2); line-height: var(--leading-head); color: var(--color-ink); margin: 0; max-width: var(--measure-short); }
+
+.quote { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; border-top: var(--border-thick) solid var(--color-lime); padding-top: var(--space-5); }
+.quote-text { font-family: var(--font-display); font-size: var(--text-h3); line-height: var(--leading-tight); color: var(--color-white); margin: 0; max-width: var(--measure); }
+.quote-by { font-family: var(--font-label); font-size: var(--text-label); text-transform: uppercase; letter-spacing: var(--track-wider); color: var(--color-lime); margin: 0; }
+
+.gate { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-6); min-height: var(--gate-min); box-sizing: border-box; background-color: var(--color-ink); background-image: linear-gradient(var(--color-scrim-soft), var(--color-scrim)), url("images/unnamed%20(1).png"); background-size: cover; background-position: center; padding: var(--pad-section) var(--pad-shell); }
+.gate-card { display: flex; flex-direction: column; align-items: center; gap: var(--space-5); max-width: var(--measure); box-sizing: border-box; background: var(--color-navy-deep); border: var(--border-thin) solid var(--color-line); border-radius: var(--radius-lg); padding: var(--space-8); }
+.gate-logo { display: block; width: var(--gate-logo-w); height: auto; }
+.gate-title { font-family: var(--font-display); font-size: var(--text-h2); line-height: var(--leading-head); color: var(--color-white); margin: 0; text-align: center; }
+.gate-text { font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-body); color: var(--color-mist); margin: 0; text-align: center; max-width: var(--measure-short); }
+.gate-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; }
+.gate-fine { font-family: var(--font-label); font-size: var(--text-label); text-transform: uppercase; letter-spacing: var(--track-wider); color: var(--color-steel); margin: 0; text-align: center; }
+
+.lay-tablet { width: var(--frame-tablet); --text-hero: var(--text-hero-t); --text-h1: var(--text-h1-t); --text-h2: var(--text-h2-t); --text-h3: var(--text-h3-t); --text-lead: var(--text-lead-t); --pad-section: var(--pad-section-t); --pad-shell: var(--pad-shell-t); --logo-h: var(--logo-h-t); --hero-min: var(--hero-min-t); --shot-h: var(--shot-h-t); --col-half: var(--col-half-t); --card-min: var(--card-min-t); }
+.lay-tablet .service { gap: var(--space-6); }
+.lay-tablet .split { gap: var(--space-6); }
+.lay-tablet .panel { padding: var(--space-6); }
+.lay-tablet .shot { max-width: none; }
+
+.lay-mobile { width: var(--frame-mobile); --text-hero: var(--text-hero-m); --text-h1: var(--text-h1-m); --text-h2: var(--text-h2-m); --text-h3: var(--text-h3-m); --text-lead: var(--text-lead-m); --pad-section: var(--pad-section-m); --pad-shell: var(--pad-shell-m); --logo-h: var(--logo-h-m); --hero-min: var(--hero-min-m); --shot-h: var(--shot-h-m); --gate-min: var(--gate-min-m); --gate-logo-w: var(--gate-logo-w-m); --stat-min: var(--stat-min-m); }
+.lay-mobile .hero { justify-content: flex-end; background-position: center top; }
+.lay-mobile .hero-home { background-image: linear-gradient(to bottom, var(--color-scrim-soft), var(--color-scrim)), url("images/unnamed%20(21).jpg"); }
+.lay-mobile .hero-strip { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+.lay-mobile .hero-strip .dot-sep { display: none; }
+.lay-mobile .split { flex-direction: column; align-items: stretch; gap: var(--space-6); }
+.lay-mobile .service { flex-direction: column; gap: var(--space-5); padding-top: var(--space-6); padding-bottom: var(--space-6); }
+.lay-mobile .card-cat { flex: 1 1 100%; }
+.lay-mobile .card-feature { flex: 1 1 100%; padding: var(--space-5); }
+.lay-mobile .shot { flex: 1 1 100%; max-width: none; }
+.lay-mobile .strip-img { flex: 1 1 100%; }
+.lay-mobile .panel { padding: var(--space-5); border-radius: var(--radius-md); }
+.lay-mobile .cta { flex-direction: column; align-items: stretch; padding: var(--space-6); border-radius: var(--radius-md); }
+.lay-mobile .button-row > * { width: 100%; box-sizing: border-box; }
+.lay-mobile .form-field { flex: 1 1 100%; }
+.lay-mobile .gate-card { padding: var(--space-6); }
+.lay-mobile .gate-actions { flex-direction: column; align-items: stretch; width: 100%; }
+.lay-mobile .gate-actions > * { width: 100%; box-sizing: border-box; }
+.lay-mobile .filters { gap: var(--space-2); }
+.lay-mobile .service-img { aspect-ratio: var(--ratio-photo); }
+</style>
+</helmet>
+<div class="workbench">
+  <div class="tool-bar">
+    <p class="tool-label">Smoke Plus Cellular</p>
+    <div class="tool-group">
+      <sc-for list="{{ pageTabs }}" as="tab" hint-placeholder-count="5">
+        <button class="{{ tab.cls }}" onClick="{{ tab.go }}">{{ tab.label }}</button>
+      </sc-for>
+    </div>
+    <div class="tool-group">
+      <sc-for list="{{ widthTabs }}" as="tab" hint-placeholder-count="3">
+        <button class="{{ tab.cls }}" onClick="{{ tab.go }}">{{ tab.label }}</button>
+      </sc-for>
+    </div>
+    <div class="tool-group">
+      <button class="tool-btn" onClick="{{ showGate }}">Age gate</button>
+    </div>
+  </div>
+  <div class="frame-wrap">
+    <p class="frame-meta">{{ frameLabel }}</p>
+    <div class="site {{ layCls }}">
+
+      <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
+        <div class="gate">
+          <div class="gate-card">
+            <img class="gate-logo" src="images/unnamed.png" alt="Smoke Plus Cellular">
+            <h1 class="gate-title">Are you 21 or older?</h1>
+            <p class="gate-text">This site shows tobacco, vape and kratom products. New York State law says you have to be 21 to buy them, and we card everyone at the counter.</p>
+            <div class="gate-actions">
+              <button class="button-primary" onClick="{{ gateYes }}">Yes, I am 21 or older</button>
+              <button class="button-ghost" onClick="{{ gateNo }}">No, I am under 21</button>
+            </div>
+            <p class="gate-fine">215 Main St, Johnson City NY 13790</p>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ gateBlocked }}" hint-placeholder-val="{{ false }}">
+        <div class="gate">
+          <div class="gate-card">
+            <img class="gate-logo" src="images/unnamed.png" alt="Smoke Plus Cellular">
+            <h1 class="gate-title">Sorry, we cannot let you in</h1>
+            <p class="gate-text">You have to be 21 to shop with us. The phone counter is a different story, so if you need a screen or a battery fixed, call the shop with a parent or guardian.</p>
+            <div class="gate-actions">
+              <button class="button-ghost" onClick="{{ gateBack }}">Go back</button>
+            </div>
+            <p class="gate-fine">607-237-0051</p>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ siteOpen }}" hint-placeholder-val="{{ true }}">
+        <dc-import name="SiteHeader" active="{{ page }}" on-nav="{{ goto }}" hint-size="100%,110px"></dc-import>
+
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+          <main class="page">
+            <section class="hero hero-home">
+              <div class="shell">
+                <div class="hero-inner">
+                  <p class="eyebrow eyebrow-light"><span class="rule"></span>215 Main St, Johnson City NY</p>
+                  <h1 class="hero-title">More than smoke.</h1>
+                  <p class="lead lead-light">Vapes, glass, hookah, kratom, cigars, phones and phone repair, all on one floor on Main Street. We stock deep and we price it to beat the chains up the road.</p>
+                  <div class="button-row">
+                    <button class="button-primary" onClick="{{ goContact }}">Call 607-237-0051</button>
+                    <button class="button-ghost" onClick="{{ goServices }}">See what we carry</button>
+                  </div>
+                  <p class="hero-strip">Open till 10pm every night<span class="dot-sep"></span>Walk in, no appointment<span class="dot-sep"></span>Cash and card</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell stack-6">
+                <p class="eyebrow eyebrow-dark"><span class="rule"></span>Four counters under one roof</p>
+                <h2 class="h2 ink">Pick a wall and we will walk you to it</h2>
+                <div class="row">
+                  <button class="card-cat" onClick="{{ goServices }}">
+                    <img class="card-cat-img" src="images/unnamed.jpg" alt="Disposable vape case at Smoke Plus Cellular">
+                    <span class="card-cat-body">
+                      <span class="card-cat-name">Vapes and disposables</span>
+                      <span class="card-cat-text">A full case of disposables, pods, salt nic and coils in the flavors people ask for.</span>
+                    </span>
+                  </button>
+                  <button class="card-cat" onClick="{{ goServices }}">
+                    <img class="card-cat-img" src="images/unnamed%20(2).jpg" alt="Glass pipes and hookahs on display shelves">
+                    <span class="card-cat-body">
+                      <span class="card-cat-name">Glass, hookah and shisha</span>
+                      <span class="card-cat-text">Rigs, beakers, bubblers and full hookah setups, plus shisha by the tin.</span>
+                    </span>
+                  </button>
+                  <button class="card-cat" onClick="{{ goServices }}">
+                    <img class="card-cat-img" src="images/unnamed%20(19).jpg" alt="Phone accessory counter with cases and chargers">
+                    <span class="card-cat-body">
+                      <span class="card-cat-name">Phones and repair</span>
+                      <span class="card-cat-text">Screens, batteries, back glass, cases, prepaid plans and used iPhones.</span>
+                    </span>
+                  </button>
+                  <button class="card-cat" onClick="{{ goServices }}">
+                    <img class="card-cat-img" src="images/unnamed%20(6).jpg" alt="Kratom powders and capsules on the shelf">
+                    <span class="card-cat-body">
+                      <span class="card-cat-name">Kratom, cigars and wraps</span>
+                      <span class="card-cat-text">Powders, capsules, extracts, premium cigars, cigarillos, cones and papers.</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-ink">
+              <div class="shell stack-6">
+                <p class="eyebrow eyebrow-light"><span class="rule"></span>Why people skip the chain store</p>
+                <h2 class="h2 on-dark">Best prices in town, and we mean it</h2>
+                <div class="row">
+                  <div class="card-feature">
+                    <p class="card-num">01</p>
+                    <h3 class="h3 on-dark">We price against the whole county</h3>
+                    <p class="copy copy-light">Tell us what you paid somewhere else in Broome County and we will do what we can to beat it. That is how the shop got busy in the first place.</p>
+                  </div>
+                  <div class="card-feature">
+                    <p class="card-num">02</p>
+                    <h3 class="h3 on-dark">The shelves are actually full</h3>
+                    <p class="copy copy-light">Four walls of glass, a case of disposables, shisha stacked to the ceiling and kratom in powder or capsules. You are not leaving empty handed.</p>
+                  </div>
+                  <div class="card-feature">
+                    <p class="card-num">03</p>
+                    <h3 class="h3 on-dark">Repairs happen in store</h3>
+                    <p class="copy copy-light">Cracked screen, dead battery, smashed back glass. Bring the phone to the counter and we quote you before we touch it.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell">
+                <div class="split split-top">
+                  <div class="split-col">
+                    <p class="eyebrow eyebrow-dark"><span class="rule"></span>The phone side of the shop</p>
+                    <h2 class="h2 ink">We fix phones, sell phones and set up your plan</h2>
+                    <p class="copy copy-dark">The cell counter sits just inside the front door. Most screen and battery jobs are done the same day. We also buy and sell used iPhones, so bring the old one in when you upgrade.</p>
+                    <ul class="list list-dark">
+                      <li class="list-item"><span class="list-bullet"></span>Screen, battery and back glass replacement</li>
+                      <li class="list-item"><span class="list-bullet"></span>Charging port and speaker cleanup</li>
+                      <li class="list-item"><span class="list-bullet"></span>We buy and sell used iPhones</li>
+                      <li class="list-item"><span class="list-bullet"></span>Prepaid plans and SIM activation</li>
+                      <li class="list-item"><span class="list-bullet"></span>Cases, protectors, chargers and earbuds</li>
+                    </ul>
+                    <div class="button-row">
+                      <button class="button-outline" onClick="{{ goContact }}">Ask for a repair quote</button>
+                    </div>
+                  </div>
+                  <div class="split-col">
+                    <img class="service-img" src="images/unnamed%20(4).jpg" alt="Phone cases, earbuds and televisions behind the cell counter">
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-navy">
+              <div class="shell stack-6">
+                <p class="eyebrow eyebrow-light"><span class="rule"></span>The shop in numbers</p>
+                <div class="row">
+                  <div class="stat"><p class="stat-num">2022</p><p class="stat-label">Opened on Main Street</p></div>
+                  <div class="stat"><p class="stat-num">5</p><p class="stat-label">People behind the counters</p></div>
+                  <div class="stat"><p class="stat-num">10+</p><p class="stat-label">Years in the business</p></div>
+                  <div class="stat"><p class="stat-num">14</p><p class="stat-label">Hours open every weekday</p></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell stack-6">
+                <p class="eyebrow eyebrow-dark"><span class="rule"></span>Inside the shop</p>
+                <h2 class="h2 ink">Have a look before you come in</h2>
+                <div class="strip">
+                  <img class="strip-img" src="images/unnamed%20(15).jpg" alt="Wall of glass pipes and water pipes">
+                  <img class="strip-img" src="images/unnamed%20(3).jpg" alt="Shisha tins stacked on the shelf">
+                  <img class="strip-img" src="images/unnamed%20(5).jpg" alt="Wraps, cones and rolling papers">
+                  <img class="strip-img" src="images/unnamed%20(18).jpg" alt="Bluetooth speakers and sunglasses display">
+                  <img class="strip-img" src="images/unnamed%20(13).jpg" alt="Cigarettes and nicotine pouches behind the counter">
+                </div>
+                <div class="button-row">
+                  <button class="button-outline" onClick="{{ goGallery }}">See the full gallery</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-cloud">
+              <div class="shell stack-5">
+                <p class="eyebrow eyebrow-dark"><span class="rule"></span>Who comes in</p>
+                <h2 class="h2 ink">Minutes from most of Broome County</h2>
+                <p class="copy copy-dark">Parking is right out front on Main Street. People drive in from all over the area, usually because someone told them about the prices.</p>
+                <div class="chips">
+                  <span class="chip">Johnson City</span>
+                  <span class="chip">Binghamton</span>
+                  <span class="chip">Endicott</span>
+                  <span class="chip">Endwell</span>
+                  <span class="chip">Vestal</span>
+                  <span class="chip">Port Dickinson</span>
+                  <span class="chip">Chenango Bridge</span>
+                  <span class="chip">Conklin</span>
+                  <span class="chip">Broome County</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell">
+                <div class="cta">
+                  <h2 class="cta-title">Call first and we will hold it at the counter</h2>
+                  <div class="button-row">
+                    <button class="button-outline" onClick="{{ goContact }}">607-237-0051</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </sc-if>
+
+        <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+          <main class="page">
+            <section class="section-ink">
+              <div class="shell page-head">
+                <p class="eyebrow eyebrow-light"><span class="rule"></span>What we do</p>
+                <h1 class="h1 on-dark">Four counters, one shop</h1>
+                <p class="lead lead-light">Everything below is on the shelf at 215 Main St. Nothing here ships and we do not deliver, so come in and we will pull it down for you.</p>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell">
+                <div class="service">
+                  <div class="service-media">
+                    <img class="service-img" src="images/unnamed.jpg" alt="Disposable vape case with VIHO, Kumi and Lost Mary">
+                  </div>
+                  <div class="service-body">
+                    <p class="card-num">01</p>
+                    <h2 class="h2 ink">Vapes and disposables</h2>
+                    <p class="copy copy-dark">The disposable case runs the length of the front counter. VIHO, Kumi, Lost Mary, JUUL and Geek Bar, in the flavors people actually come back for. If you are trying to get off cigarettes, tell us and we will talk you through it instead of selling you the biggest box.</p>
+                    <ul class="list list-dark">
+                      <li class="list-item"><span class="list-bullet"></span>Disposables from 5,000 to 50,000 puffs</li>
+                      <li class="list-item"><span class="list-bullet"></span>Pod systems and replacement pods</li>
+                      <li class="list-item"><span class="list-bullet"></span>E liquid and salt nicotine</li>
+                      <li class="list-item"><span class="list-bullet"></span>Coils, batteries and chargers</li>
+                      <li class="list-item"><span class="list-bullet"></span>Mods, tanks and spare glass</li>
+                    </ul>
+                    <div class="button-row">
+                      <button class="button-outline" onClick="{{ goContact }}">Ask what is in stock</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="service service-flip">
+                  <div class="service-media">
+                    <img class="service-img" src="images/unnamed%20(14).jpg" alt="Glass rigs, bongs and hookahs on wooden shelving">
+                  </div>
+                  <div class="service-body">
+                    <p class="card-num">02</p>
+                    <h2 class="h2 ink">Glass, hookah and shisha</h2>
+                    <p class="copy copy-dark">Four walls of glass, from cheap silicone pieces that survive a drop to heavy beakers and rigs. Full hookah setups with hoses, bowls and charcoal, and shisha by the tin in every flavor we can get our hands on.</p>
+                    <ul class="list list-dark">
+                      <li class="list-item"><span class="list-bullet"></span>Water pipes, beakers and rigs</li>
+                      <li class="list-item"><span class="list-bullet"></span>Hand pipes, bubblers and silicone</li>
+                      <li class="list-item"><span class="list-bullet"></span>Full hookahs, hoses, bowls and charcoal</li>
+                      <li class="list-item"><span class="list-bullet"></span>Shisha tins, Eternal Smoke, Starbuzz and Mazaya</li>
+                      <li class="list-item"><span class="list-bullet"></span>Grinders, screens, torches and cleaner</li>
+                    </ul>
+                    <div class="button-row">
+                      <button class="button-outline" onClick="{{ goGallery }}">See the glass wall</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="service">
+                  <div class="service-media">
+                    <img class="service-img" src="images/unnamed%20(19).jpg" alt="Cell phone counter with cases, cables and accessories">
+                  </div>
+                  <div class="service-body">
+                    <p class="card-num">03</p>
+                    <h2 class="h2 ink">Phones, accessories and repair</h2>
+                    <p class="copy copy-dark">The cell side is a real repair counter, not a rack of cases. Screens, batteries and back glass are done in store, usually the same day. We buy and sell used iPhones and we can put you on a prepaid line before you leave.</p>
+                    <ul class="list list-dark">
+                      <li class="list-item"><span class="list-bullet"></span>Screen, battery and back glass repair</li>
+                      <li class="list-item"><span class="list-bullet"></span>Buy and sell used iPhones</li>
+                      <li class="list-item"><span class="list-bullet"></span>Prepaid plans and SIM activation</li>
+                      <li class="list-item"><span class="list-bullet"></span>Cases, screen protectors, cables and chargers</li>
+                      <li class="list-item"><span class="list-bullet"></span>Earbuds, speakers, controllers and televisions</li>
+                    </ul>
+                    <div class="button-row">
+                      <button class="button-outline" onClick="{{ goContact }}">Get a repair quote</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="service service-flip">
+                  <div class="service-media">
+                    <img class="service-img" src="images/unnamed%20(6).jpg" alt="Kratom powders, capsules and extracts on the shelf">
+                  </div>
+                  <div class="service-body">
+                    <p class="card-num">04</p>
+                    <h2 class="h2 ink">Kratom, cigars and wraps</h2>
+                    <p class="copy copy-dark">Kratom in powder, capsules and extract from Klarity, Remarkable Herbs and OPMS. Premium cigars in the humidor, cigarillos by the box, and about every wrap, cone and paper brand we can fit on a shelf.</p>
+                    <ul class="list list-dark">
+                      <li class="list-item"><span class="list-bullet"></span>Kratom powder, capsules and extracts</li>
+                      <li class="list-item"><span class="list-bullet"></span>Premium cigars and cigarillos</li>
+                      <li class="list-item"><span class="list-bullet"></span>Zig Zag, Game, Show and Rillo wraps</li>
+                      <li class="list-item"><span class="list-bullet"></span>RAW, Elements and Bob Marley papers and cones</li>
+                      <li class="list-item"><span class="list-bullet"></span>Cigarettes, ZYN and nicotine pouches</li>
+                    </ul>
+                    <div class="button-row">
+                      <button class="button-outline" onClick="{{ goContact }}">Call about a brand</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-ink">
+              <div class="shell stack-5">
+                <p class="eyebrow eyebrow-light"><span class="rule"></span>Also on the shelves</p>
+                <h2 class="h2 on-dark">The stuff people forget we carry</h2>
+                <div class="chips">
+                  <span class="chip chip-dark">Wild Berry incense</span>
+                  <span class="chip chip-dark">Candles and burners</span>
+                  <span class="chip chip-dark">Lighters and torches</span>
+                  <span class="chip chip-dark">Detox drinks</span>
+                  <span class="chip chip-dark">Hair and body care</span>
+                  <span class="chip chip-dark">Energy shots</span>
+                  <span class="chip chip-dark">Sunglasses</span>
+                  <span class="chip chip-dark">Bluetooth speakers</span>
+                  <span class="chip chip-dark">Gaming accessories</span>
+                  <span class="chip chip-dark">Snacks and gum</span>
+                  <span class="chip chip-dark">Lottery</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell stack-6">
+                <div class="notice">
+                  <p class="notice-head">ID required, every time</p>
+                  <p class="notice-text">Tobacco, vape, nicotine and kratom products are sold to customers 21 and over only. We card everyone, including regulars. Bring a valid photo ID.</p>
+                </div>
+                <div class="cta">
+                  <h2 class="cta-title">Not sure if we have it? One call settles it</h2>
+                  <div class="button-row">
+                    <button class="button-outline" onClick="{{ goContact }}">607-237-0051</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </sc-if>
+
+        <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
+          <main class="page">
+            <section class="section-ink">
+              <div class="shell page-head">
+                <p class="eyebrow eyebrow-light"><span class="rule"></span>Inside the shop</p>
+                <h1 class="h1 on-dark">Every wall, up close</h1>
+                <p class="lead lead-light">No stock photos here. This is 215 Main St, shelf by shelf, so you know what you are walking into.</p>
+              </div>
+            </section>
+            <section class="section section-paper">
+              <div class="shell stack-6">
+                <div class="filters">
+                  <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+                    <button class="{{ f.cls }}" onClick="{{ f.go }}">{{ f.label }}</button>
+                  </sc-for>
+                </div>
+                <div class="shots">
+                  <sc-for list="{{ shots }}" as="shot" hint-placeholder-count="9">
+                    <figure class="shot">
+                      <img class="shot-img" src="{{ shot.src }}" alt="{{ shot.cap }}">
+                      <figcaption class="shot-cap">{{ shot.cap }}</figcaption>
+                    </figure>
+                  </sc-for>
+                </div>
+              </div>
+            </section>
+            <section class="section section-cloud">
+              <div class="shell">
+                <div class="cta">
+                  <h2 class="cta-title">Come see the rest of it in person</h2>
+                  <div class="button-row">
+                    <button class="button-outline" onClick="{{ goContact }}">Get directions</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </sc-if>
+
+        <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+          <main class="page">
+            <section class="section-ink">
+              <div class="shell page-head">
+                <p class="eyebrow eyebrow-light"><span class="rule"></span>About us</p>
+                <h1 class="h1 on-dark">A Main Street shop, run by the owner</h1>
+                <p class="lead lead-light">Smoke Plus Cellular has been on Main Street in Johnson City since 2022. Same owner, same counters, same reason people keep coming back.</p>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell">
+                <div class="split split-top">
+                  <div class="split-col">
+                    <p class="eyebrow eyebrow-dark"><span class="rule"></span>How it started</p>
+                    <h2 class="h2 ink">Two trips turned into one stop</h2>
+                    <p class="copy copy-dark">Ishaq Mohamed opened the shop in 2022 with a simple idea. People were driving to one place for a vape and another place to get a phone screen fixed, so he put both under one roof at 215 Main St.</p>
+                    <p class="copy copy-dark">He had already spent more than ten years in the business before that, which is how he knows what sells and what sits on a shelf collecting dust. That is why the walls here are full and the prices are lower than the chains on the same street.</p>
+                    <p class="copy copy-dark">Five of us work the counters now. We card everyone, we answer questions straight, and we would rather point you at the right product than the expensive one.</p>
+                  </div>
+                  <div class="split-col">
+                    <img class="service-img" src="images/unnamed%20(21).jpg" alt="Smoke Plus Cellular storefront on Main Street, Johnson City">
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-ink">
+              <div class="shell stack-7">
+                <div class="quote">
+                  <p class="quote-text">Best prices in town. That is the whole pitch, and we hold to it.</p>
+                  <p class="quote-by">Ishaq Mohamed, owner</p>
+                </div>
+                <div class="row">
+                  <div class="card-feature">
+                    <p class="card-num">01</p>
+                    <h3 class="h3 on-dark">Straight prices</h3>
+                    <p class="copy copy-light">One price on the shelf, the same for everyone, no haggling required to get a fair number.</p>
+                  </div>
+                  <div class="card-feature">
+                    <p class="card-num">02</p>
+                    <h3 class="h3 on-dark">Real selection</h3>
+                    <p class="copy copy-light">If it is a brand people in Broome County ask for, we try to keep it in stock instead of ordering it later.</p>
+                  </div>
+                  <div class="card-feature">
+                    <p class="card-num">03</p>
+                    <h3 class="h3 on-dark">Honest answers</h3>
+                    <p class="copy copy-light">Ask what something does or whether you need it. We will tell you, even when the answer is no.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-navy">
+              <div class="shell stack-6">
+                <p class="eyebrow eyebrow-light"><span class="rule"></span>The team and the paperwork</p>
+                <div class="row">
+                  <div class="stat"><p class="stat-num">5</p><p class="stat-label">On the team</p></div>
+                  <div class="stat"><p class="stat-num">10+</p><p class="stat-label">Years of experience</p></div>
+                  <div class="stat"><p class="stat-num">2022</p><p class="stat-label">Year we opened</p></div>
+                  <div class="stat"><p class="stat-num">Yes</p><p class="stat-label">Licensed, insured and bonded</p></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell">
+                <div class="split split-top">
+                  <div class="split-col">
+                    <div class="panel panel-col">
+                      <p class="eyebrow eyebrow-dark"><span class="rule"></span>Hours</p>
+                      <div class="hours">
+                        <div class="hours-row"><p class="hours-day">Monday to Friday</p><p class="hours-time">8:00am to 10:00pm</p></div>
+                        <div class="hours-row"><p class="hours-day">Saturday</p><p class="hours-time">9:00am to 10:00pm</p></div>
+                        <div class="hours-row"><p class="hours-day">Sunday</p><p class="hours-time">9:00am to 10:00pm</p></div>
+                        <div class="hours-row"><p class="hours-day">Holidays</p><p class="hours-time">Open, every one of them</p></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="split-col">
+                    <div class="panel panel-col">
+                      <p class="eyebrow eyebrow-dark"><span class="rule"></span>Where to find us</p>
+                      <p class="big-phone">215 Main St</p>
+                      <p class="copy copy-dark">Johnson City, NY 13790. Street parking out front, next door to the barbershop. Customers come to us, we do not deliver.</p>
+                      <div class="button-row">
+                        <button class="button-outline" onClick="{{ goContact }}">Call the shop</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </sc-if>
+
+        <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+          <main class="page">
+            <section class="section-ink">
+              <div class="shell page-head">
+                <p class="eyebrow eyebrow-light"><span class="rule"></span>Get in touch</p>
+                <h1 class="h1 on-dark">Call the shop</h1>
+                <p class="lead lead-light">The phone is the fastest way to reach us. Someone is behind the counter from 8am on weekdays and 9am on weekends.</p>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell">
+                <div class="split split-top">
+                  <div class="split-col">
+                    <div class="panel panel-dark panel-col">
+                      <p class="eyebrow eyebrow-light"><span class="rule"></span>Phone</p>
+                      <p class="big-phone big-phone-light">607-237-0051</p>
+                      <p class="copy copy-light">Best for stock questions, repair quotes and holding something at the counter.</p>
+                      <p class="eyebrow eyebrow-light"><span class="rule"></span>Email</p>
+                      <p class="copy copy-light">Smokpluswholesale@gmail.com</p>
+                      <p class="eyebrow eyebrow-light"><span class="rule"></span>Address</p>
+                      <p class="copy copy-light">215 Main St<br>Johnson City, NY 13790</p>
+                      <div class="button-row">
+                        <button class="button-primary" onClick="{{ noop }}">Call 607-237-0051</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="split-col">
+                    <div class="panel panel-col">
+                      <span class="form-badge">Visual mockup, not connected</span>
+                      <h2 class="h2 ink">Send us a question</h2>
+                      <form class="form">
+                        <div class="form-row">
+                          <div class="form-field">
+                            <label class="form-label" for="c-name">Your name</label>
+                            <input class="form-input" id="c-name" type="text" placeholder="First and last name">
+                          </div>
+                          <div class="form-field">
+                            <label class="form-label" for="c-phone">Phone</label>
+                            <input class="form-input" id="c-phone" type="tel" placeholder="607-000-0000">
+                          </div>
+                        </div>
+                        <div class="form-field">
+                          <label class="form-label" for="c-email">Email</label>
+                          <input class="form-input" id="c-email" type="email" placeholder="you@email.com">
+                        </div>
+                        <div class="form-field">
+                          <label class="form-label" for="c-topic">What do you need?</label>
+                          <select class="form-input" id="c-topic">
+                            <option>Phone repair quote</option>
+                            <option>Is this in stock?</option>
+                            <option>Buy or sell a used phone</option>
+                            <option>Prepaid plan setup</option>
+                            <option>Something else</option>
+                          </select>
+                        </div>
+                        <div class="form-field">
+                          <label class="form-label" for="c-message">Message</label>
+                          <textarea class="form-input form-area" id="c-message" placeholder="Tell us the model, the brand or the flavor you are after."></textarea>
+                        </div>
+                        <div class="button-row">
+                          <span class="button-primary">Send message</span>
+                        </div>
+                        <p class="form-note">Mockup only. This form does not submit anywhere yet. Call 607-237-0051 for a real answer.</p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-cloud">
+              <div class="shell stack-6">
+                <p class="eyebrow eyebrow-dark"><span class="rule"></span>Find the door</p>
+                <h2 class="h2 ink">215 Main St, Johnson City NY 13790</h2>
+                <div class="map-slot">
+                  <p class="map-label">Google Map embed goes here<br>215 Main St, Johnson City NY 13790</p>
+                </div>
+                <div class="row-tight">
+                  <img class="strip-img" src="images/unnamed%20(20).jpg" alt="Main Street frontage of Smoke Plus Cellular">
+                  <img class="strip-img" src="images/unnamed%20(1).png" alt="The shop lit up at night">
+                  <img class="strip-img" src="images/unnamed%20(11).jpg" alt="Behind the front counter">
+                </div>
+              </div>
+            </section>
+
+            <section class="section section-paper">
+              <div class="shell stack-6">
+                <div class="notice">
+                  <p class="notice-head">In store only</p>
+                  <p class="notice-text">We do not sell online and we do not deliver. Everything on this site is bought at the counter at 215 Main St, and you must be 21 or older with a valid photo ID for age restricted products.</p>
+                </div>
+                <div class="cta">
+                  <h2 class="cta-title">Open till 10pm, seven days a week</h2>
+                  <div class="button-row">
+                    <button class="button-outline" onClick="{{ goHome }}">Back to the top</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </sc-if>
+
+        <dc-import name="SiteFooter" on-nav="{{ goto }}" hint-size="100%,520px"></dc-import>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1520,&quot;height&quot;:1000}}">
+const SHOTS = [
+  { src: "images/unnamed%20(12).jpg", tag: "store", cap: "Straight down the middle of the store" },
+  { src: "images/unnamed%20(21).jpg", tag: "store", cap: "The front door on Main Street" },
+  { src: "images/unnamed%20(1).png", tag: "store", cap: "Lit up at night, open till 10" },
+  { src: "images/unnamed%20(20).jpg", tag: "store", cap: "Main Street frontage, parking out front" },
+  { src: "images/unnamed%20(11).jpg", tag: "store", cap: "Behind the front counter" },
+  { src: "images/unnamed.jpg", tag: "vapes", cap: "The disposable case" },
+  { src: "images/unnamed%20(2).jpg", tag: "glass", cap: "Glass, silicone and hookah shelf" },
+  { src: "images/unnamed%20(15).jpg", tag: "glass", cap: "The long glass wall" },
+  { src: "images/unnamed%20(17).jpg", tag: "glass", cap: "Hookahs and shisha, floor to ceiling" },
+  { src: "images/unnamed%20(16).jpg", tag: "glass", cap: "Grinders, bags and small glass" },
+  { src: "images/unnamed%20(3).jpg", tag: "tobacco", cap: "Shisha stacked by the tin" },
+  { src: "images/unnamed%20(9).jpg", tag: "tobacco", cap: "Shisha, candles and incense" },
+  { src: "images/unnamed%20(5).jpg", tag: "tobacco", cap: "Wraps, cones and rolling papers" },
+  { src: "images/unnamed%20(13).jpg", tag: "tobacco", cap: "Cigarettes, ZYN and pouches" },
+  { src: "images/unnamed%20(6).jpg", tag: "tobacco", cap: "Kratom powder, capsules and extracts" },
+  { src: "images/unnamed%20(19).jpg", tag: "phones", cap: "The cell phone counter" },
+  { src: "images/unnamed%20(4).jpg", tag: "phones", cap: "Cases, earbuds and televisions" },
+  { src: "images/unnamed%20(1).jpg", tag: "phones", cap: "Controllers, headsets and TVs" },
+  { src: "images/unnamed%20(18).jpg", tag: "extras", cap: "Speakers, sunglasses and glass" },
+  { src: "images/unnamed%20(7).jpg", tag: "extras", cap: "Wild Berry incense rack" },
+  { src: "images/unnamed%20(8).jpg", tag: "extras", cap: "Hair and body care aisle" },
+  { src: "images/unnamed%20(10).jpg", tag: "extras", cap: "Lighters and small goods case" }
+];
+const FILTERS = [
+  ["all", "Everything"],
+  ["store", "The store"],
+  ["vapes", "Vapes"],
+  ["glass", "Glass and hookah"],
+  ["tobacco", "Tobacco and kratom"],
+  ["phones", "Phones"],
+  ["extras", "Extras"]
+];
+const LAYOUTS = [
+  ["desktop", "Desktop", "Desktop, 1440 px wide"],
+  ["tablet", "Tablet", "Tablet, 834 px wide"],
+  ["mobile", "Mobile", "Mobile, 390 px wide"]
+];
+const PAGES = [
+  ["home", "Home"],
+  ["services", "Services"],
+  ["gallery", "Gallery"],
+  ["about", "About"],
+  ["contact", "Contact"]
+];
+
+class Component extends DCLogic {
+  state = { page: "home", layout: "desktop", gate: "ask", filter: "all" };
+
+  top() {
+    if (typeof window !== "undefined" && window.scrollTo) window.scrollTo(0, 0);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const goto = (page) => { this.setState({ page }); this.top(); };
+    const layout = LAYOUTS.find(l => l[0] === s.layout) || LAYOUTS[0];
+    const pageLabel = (PAGES.find(p => p[0] === s.page) || PAGES[0])[1];
+    const filtered = s.filter === "all" ? SHOTS : SHOTS.filter(x => x.tag === s.filter);
+
+    return {
+      page: s.page,
+      layCls: s.layout === "desktop" ? "" : "lay-" + s.layout,
+      frameLabel: pageLabel + "  /  " + layout[2],
+      pageTabs: PAGES.map(([key, label]) => ({
+        label,
+        cls: s.page === key && s.gate === "in" ? "tool-btn tool-btn-on" : "tool-btn",
+        go: () => { this.setState({ page: key, gate: "in" }); this.top(); }
+      })),
+      widthTabs: LAYOUTS.map(([key, label]) => ({
+        label,
+        cls: s.layout === key ? "tool-btn tool-btn-on" : "tool-btn",
+        go: () => this.setState({ layout: key })
+      })),
+      showGate: () => { this.setState({ gate: "ask" }); this.top(); },
+      gateOpen: s.gate === "ask",
+      gateBlocked: s.gate === "no",
+      siteOpen: s.gate === "in",
+      gateYes: () => { this.setState({ gate: "in" }); this.top(); },
+      gateNo: () => this.setState({ gate: "no" }),
+      gateBack: () => this.setState({ gate: "ask" }),
+      isHome: s.page === "home",
+      isServices: s.page === "services",
+      isGallery: s.page === "gallery",
+      isAbout: s.page === "about",
+      isContact: s.page === "contact",
+      goto,
+      goHome: () => goto("home"),
+      goServices: () => goto("services"),
+      goGallery: () => goto("gallery"),
+      goContact: () => goto("contact"),
+      noop: () => {},
+      filters: FILTERS.map(([key, label]) => ({
+        label,
+        cls: s.filter === key ? "filter filter-on" : "filter",
+        go: () => this.setState({ filter: key })
+      })),
+      shots: filtered
+    };
+  }
+}
+</script>
+</body>
+</html>

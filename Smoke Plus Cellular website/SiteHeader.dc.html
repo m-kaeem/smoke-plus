@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+.site-nav { display: flex; flex-direction: column; position: sticky; top: 0; z-index: 50; background: var(--color-ink); border-bottom: var(--border-thick) solid var(--color-lime); }
+.nav-shell { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); width: 100%; max-width: var(--shell-max); margin: 0 auto; padding: var(--space-3) var(--pad-shell); box-sizing: border-box; }
+.nav-brand { display: flex; align-items: center; background: none; border: 0; padding: 0; cursor: pointer; }
+.nav-logo { display: block; height: var(--logo-h); width: auto; }
+.nav-links { display: flex; align-items: center; gap: var(--space-5); }
+.nav-link { font-family: var(--font-label); font-size: var(--text-nav); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-mist); background: none; border: 0; border-bottom: var(--border-thick) solid transparent; padding: var(--space-2) 0; cursor: pointer; }
+.nav-link:hover { color: var(--color-white); }
+.nav-link-on { color: var(--color-lime); border-bottom-color: var(--color-lime); }
+.nav-actions { display: flex; align-items: center; gap: var(--space-4); }
+.nav-open { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-label); font-size: var(--text-small); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-lime); }
+.nav-toggle { display: none; align-items: center; gap: var(--space-2); font-family: var(--font-label); font-size: var(--text-nav); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-white); background: none; border: var(--border-thin) solid var(--color-line); border-radius: var(--radius-sm); padding: var(--space-3) var(--space-4); cursor: pointer; }
+.nav-bars { display: flex; flex-direction: column; gap: var(--space-1); }
+.nav-bar { display: block; width: var(--bar-w); height: var(--bar-h); background: var(--color-lime); }
+.nav-drawer { display: none; flex-direction: column; gap: var(--space-1); border-top: var(--border-thin) solid var(--color-line); padding: var(--space-4) var(--pad-shell) var(--space-5); background: var(--color-navy-deep); }
+.nav-drawer-link { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-label); font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-white); background: none; border: 0; border-bottom: var(--border-thin) solid var(--color-line); padding: var(--space-4) 0; cursor: pointer; text-align: left; }
+.nav-drawer-note { font-family: var(--font-label); font-size: var(--text-small); text-transform: uppercase; letter-spacing: var(--track-wide); color: var(--color-lime); padding-top: var(--space-4); }
+.lay-tablet .nav-open { display: none; }
+.lay-tablet .nav-links { gap: var(--space-4); }
+.lay-mobile .nav-links { display: none; }
+.lay-mobile .nav-open { display: none; }
+.lay-mobile .nav-toggle { display: flex; }
+.lay-mobile .nav-drawer-open { display: flex; }
+.nav-call-short { display: none; }
+.lay-mobile .nav-call { font-size: var(--text-small); padding: var(--space-3) var(--space-4); }
+.lay-mobile .nav-call-full { display: none; }
+.lay-mobile .nav-call-short { display: inline; }
+</style>
+</helmet>
+<header class="site-nav">
+  <div class="nav-shell">
+    <button class="nav-brand" onClick="{{ goHome }}">
+      <img class="nav-logo" src="images/unnamed.png" alt="Smoke Plus Cellular, phones, accessories and much more">
+    </button>
+    <nav class="nav-links">
+      <sc-for list="{{ items }}" as="item" hint-placeholder-count="5">
+        <button class="{{ item.cls }}" onClick="{{ item.go }}">{{ item.label }}</button>
+      </sc-for>
+    </nav>
+    <div class="nav-actions">
+      <span class="nav-open"><span class="dot-live"></span>Open till 10pm</span>
+      <button class="button-primary nav-call" onClick="{{ goContact }}"><span class="nav-call-full">Call 607-237-0051</span><span class="nav-call-short">607-237-0051</span></button>
+      <button class="nav-toggle" onClick="{{ toggle }}">
+        <span class="nav-bars"><span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span></span>
+        Menu
+      </button>
+    </div>
+  </div>
+  <div class="{{ drawerCls }}">
+    <sc-for list="{{ items }}" as="item" hint-placeholder-count="5">
+      <button class="nav-drawer-link" onClick="{{ item.go }}">{{ item.label }}<span class="dot-live"></span></button>
+    </sc-for>
+    <span class="nav-drawer-note">215 Main St, Johnson City NY 13790</span>
+  </div>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:110},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;services&quot;,&quot;gallery&quot;,&quot;about&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onNav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(page: string) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { open: false };
+  renderVals() {
+    const active = this.props.active ?? "home";
+    const nav = this.props.onNav;
+    const go = (key) => { this.setState({ open: false }); if (nav) nav(key); };
+    const pages = [["home", "Home"], ["services", "Services"], ["gallery", "Gallery"], ["about", "About"], ["contact", "Contact"]];
+    return {
+      items: pages.map(([key, label]) => ({
+        key, label,
+        cls: key === active ? "nav-link nav-link-on" : "nav-link",
+        go: () => go(key)
+      })),
+      goHome: () => go("home"),
+      goContact: () => go("contact"),
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      drawerCls: this.state.open ? "nav-drawer nav-drawer-open" : "nav-drawer"
+    };
+  }
+}
+</script>
+</body>
+</html>
