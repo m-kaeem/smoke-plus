@@ -87,8 +87,10 @@ def header():
         "hb-header-main-sep-color": LIME,
         "hb-header-main-layout-width": "content",
         "hb-header-height": {"desktop": 86, "tablet": 78, "mobile": 68},
-        "hb-header-spacing": spacing(box(12, 48, 12, 48), box(12, 32, 12, 32),
-                                     box(12, 20, 12, 20)),
+        # Astra free reads the row's padding from the section key, not
+        # hb-header-spacing (which has no dynamic CSS without Astra Pro).
+        "section-primary-header-builder-padding": spacing(
+            box(12, 48, 12, 48), box(12, 32, 12, 32), box(12, 20, 12, 20)),
         "hb-header-main-menu-align": "inline",
 
         # --- logo -----------------------------------------------------------
@@ -253,7 +255,8 @@ def widgets():
         "media_image": {
             2: {"attachment_id": 32, "url": "", "title": "",
                 "caption": "", "alt": "Smoke Plus Cellular", "align": "none",
-                "size": "full", "width": 220, "height": 0, "link_type": "none",
+                "size": "custom", "width": 220, "height": 145,
+                "link_type": "none",
                 "link_url": "", "image_classes": "", "link_classes": "",
                 "link_rel": "", "link_target_blank": False,
                 "image_title": ""},
