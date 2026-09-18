@@ -5,26 +5,8 @@ closing CTA ends above the theme's footer.
 """
 from tree import div, heading, para, button, image
 from classes import IMG
-
-# Resolved to real permalinks by the applier.
-U_SERVICES = "{{URL:services}}"
-U_GALLERY = "{{URL:gallery}}"
-U_CONTACT = "{{URL:contact}}"
-TEL = "tel:+16072370051"
-
-
-def eyebrow(text, tone):
-    """The rule + label pair. `tone` is 'dark' or 'light'."""
-    return div(["spc-eyebrow"], [
-        div(["spc-rule"]),
-        para(["spc-eyebrow-text", "spc-eyebrow-" + tone], text, tag="span"),
-    ])
-
-
-def section(tone, shell_classes, children):
-    return div(["spc-section", "spc-section-" + tone], [
-        div(["spc-shell"] + shell_classes, children)
-    ], tag="section")
+from common import (eyebrow, section, bullets, cta,
+                    U_SERVICES, U_GALLERY, U_CONTACT, TEL)
 
 
 def hero():
@@ -133,12 +115,6 @@ REPAIR_POINTS = [
 
 
 def phone_side():
-    items = [
-        div(["spc-list-item"], [
-            div(["spc-list-bullet"]),
-            para(["spc-list-text"], t),
-        ]) for t in REPAIR_POINTS
-    ]
     return section("paper", [], [
         div(["spc-split", "spc-split-top"], [
             div(["spc-split-col"], [
@@ -150,7 +126,7 @@ def phone_side():
                      "screen and battery jobs are done the same day. We also "
                      "buy and sell used iPhones, so bring the old one in when "
                      "you upgrade."),
-                div(["spc-list"], items),
+                bullets(REPAIR_POINTS),
                 div(["spc-button-row"], [
                     button(["spc-button-outline"], "Ask for a repair quote",
                            U_CONTACT),
@@ -216,13 +192,8 @@ def catchment():
 
 def closing_cta():
     return section("paper", [], [
-        div(["spc-cta"], [
-            heading(["spc-cta-title"],
-                    "Call first and we will hold it at the counter"),
-            div(["spc-button-row"], [
-                button(["spc-button-outline"], "607-237-0051", TEL),
-            ]),
-        ])
+        cta("Call first and we will hold it at the counter",
+            "607-237-0051", TEL)
     ])
 
 
