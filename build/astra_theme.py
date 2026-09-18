@@ -139,6 +139,10 @@ def header():
             "overlay-color": "", "overlay-opacity": "", "overlay-gradient": ""},
         "off-canvas-close-color": WHITE,
         "header-offcanvas-content-alignment": "flex-start",
+        "header-mobile-menu-bg-obj-responsive": {
+            "desktop": bg(NAVY_DEEP)["desktop"],
+            "tablet": bg(NAVY_DEEP)["desktop"],
+            "mobile": bg(NAVY_DEEP)["desktop"]},
         "header-mobile-menu-color-responsive": resp(WHITE, WHITE, WHITE),
         "header-mobile-menu-h-color-responsive": resp(LIME, LIME, LIME),
         "header-mobile-menu-a-color-responsive": resp(LIME, LIME, LIME),
@@ -290,8 +294,24 @@ SIDEBARS = {
 }
 
 
+def palette():
+    """Astra's own chrome (links, the mobile toggle) on the design's palette."""
+    return {"global-color-palette": {"palette": [
+        LIME,        # 0  accent
+        LIME_BRIGHT, # 1  accent hover
+        INK,         # 2  headings
+        "#48606F",   # 3  text (slate)
+        "#FBFCFB",   # 4  base background (paper)
+        "#EFF3F2",   # 5  alternate background (cloud)
+        NAVY_DEEP,   # 6
+        "#DBE3E5",   # 7  subtle border (line light)
+        STEEL,       # 8
+    ]}}
+
+
 def build():
     cfg = {}
+    cfg.update(palette())
     cfg.update(header())
     cfg.update(footer())
     return {"settings": cfg, "widgets": widgets(), "sidebars": SIDEBARS}
